@@ -1,4 +1,4 @@
-# npm package wrapper around [material-kit-react](https://github.com/creativetimofficial/material-kit-react)
+# npm package wrapper around [material-kit-react](https://github.com/creativetimofficial/material-kit-react) with primary color theming
 
 install:
 ````

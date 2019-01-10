@@ -43,7 +43,6 @@ const theme1 = createMuiTheme({
 });
 
 const themes = [theme0, theme1];
-console.log(themes);
 
 class Components extends React.Component {
   state = { theme: 0 };

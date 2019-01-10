@@ -17,10 +17,17 @@ import GridItem from "components/Grid/GridItem.jsx";
 import navPillsStyle from "assets/jss/material-kit-react/components/navPillsStyle.jsx";
 
 class NavPills extends React.Component {
+  static getDerivedStateFromProps(props, state) {
+    if (props.active !== state.initial) {
+      return { active: props.active, initial: props.active };
+    }
+    return null;
+  }
   constructor(props) {
     super(props);
     this.state = {
-      active: props.active
+      active: props.active,
+      initial: props.active
     };
   }
   handleChange = (event, active) => {

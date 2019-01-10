@@ -1,9 +1,13 @@
 {
-  "presets": ["es2015"],
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
   "plugins": [
     "transform-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-object-rest-spread",
     "transform-react-jsx",
-    "transform-object-rest-spread",
     ["module-resolver", {
       "root": ["./src"],
     }],

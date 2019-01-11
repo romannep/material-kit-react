@@ -16,7 +16,7 @@ import pillsStyle from "assets/jss/material-kit-react/views/componentsSections/p
 
 class SectionPills extends React.Component {
   state = { active: 0 };
-  setActive = () => this.setState({ active: this.state.active ? 0 : 1 });
+  setActive = index => this.setState({ active: index });
   render() {
     const { classes } = this.props;
     const { active } = this.state;
@@ -31,14 +31,11 @@ class SectionPills extends React.Component {
               <h3>
                 <small>With Icons</small>
               </h3>
-              <h3 onClick={this.setActive} style={{ cursor: "pointer" }}>
-                <small>Clik me to change tab</small>
-              </h3>
             </div>
             <GridContainer>
               <GridItem xs={12} sm={12} md={8} lg={6}>
                 <NavPills
-                  active={active}
+                  active={1}
                   color="primary"
                   tabs={[
                     {
@@ -126,9 +123,16 @@ class SectionPills extends React.Component {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={12} lg={6}>
+                <h3
+                  onClick={() => this.setActive(1)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <small>Controlled. Clik me to set active second tab</small>
+                </h3>
                 <NavPills
                   color="rose"
-                  active={active}
+                  activeTab={active}
+                  setActiveTab={this.setActive}
                   horizontal={{
                     tabsGrid: { xs: 12, sm: 4, md: 4 },
                     contentGrid: { xs: 12, sm: 8, md: 8 }

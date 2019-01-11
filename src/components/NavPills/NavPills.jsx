@@ -17,24 +17,23 @@ import GridItem from "components/Grid/GridItem.jsx";
 import navPillsStyle from "assets/jss/material-kit-react/components/navPillsStyle.jsx";
 
 class NavPills extends React.Component {
-  static getDerivedStateFromProps(props, state) {
-    if (props.active !== state.initial) {
-      return { active: props.active, initial: props.active };
-    }
-    return null;
-  }
   constructor(props) {
     super(props);
     this.state = {
-      active: props.active,
-      initial: props.active
+      active: props.active || 0,
     };
   }
   handleChange = (event, active) => {
     this.setState({ active });
+    if (this.props.setActiveTab) {
+      this.props.setActiveTab(active);
+    }
   };
   handleChangeIndex = index => {
     this.setState({ active: index });
+    if (this.props.setActiveTab) {
+      this.props.setActiveTab(index);
+    }
   };
   render() {
     const {
@@ -43,8 +42,10 @@ class NavPills extends React.Component {
       direction,
       color,
       horizontal,
-      alignCenter
+      alignCenter,
+      activeTab
     } = this.props;
+    const activeIndex = activeTab === undefined ? this.state.active : activeTab;
     const flexContainerClasses = classNames({
       [classes.flexContainer]: true,
       [classes.horizontalDisplay]: horizontal !== undefined
@@ -57,7 +58,7 @@ class NavPills extends React.Component {
           flexContainer: flexContainerClasses,
           indicator: classes.displayNone
         }}
-        value={this.state.active}
+        value={activeIndex}
         onChange={this.handleChange}
         centered={alignCenter}
       >
@@ -91,7 +92,7 @@ class NavPills extends React.Component {
       <div className={classes.contentWrapper}>
         <SwipeableViews
           axis={direction === "rtl" ? "x-reverse" : "x"}
-          index={this.state.active}
+          index={activeIndex}
           onChangeIndex={this.handleChangeIndex}
         >
           {tabs.map((prop, key) => {
@@ -119,14 +120,17 @@ class NavPills extends React.Component {
 }
 
 NavPills.defaultProps = {
-  active: 0,
-  color: "primary"
+  color: "primary",
+  initialActive: 0
 };
 
 NavPills.propTypes = {
   classes: PropTypes.object.isRequired,
   // index of the default active pill
   active: PropTypes.number,
+  // index of the active pill and change func for controlled mode
+  activeTab: PropTypes.number,
+  setActive: PropTypes.func,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       tabButton: PropTypes.string,

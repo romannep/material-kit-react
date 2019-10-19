@@ -14,10 +14,8 @@ const navPillsStyle = theme => ({
     overflow: "visible !important"
   },
   flexContainer: {
-    [theme.breakpoints.down("xs")]: {
-      display: "flex",
-      flexWrap: "wrap"
-    }
+    display: "flex",
+    flexWrap: "wrap"
   },
   displayNone: {
     display: "none !important"

@@ -51,7 +51,7 @@ const customCheckboxRadioSwitch = theme => ({
   label: {
     cursor: "pointer",
     paddingLeft: "0",
-    color: "rgba(0, 0, 0, 0.26)",
+    color: "rgba(0, 0, 0, 0.8)",
     fontSize: "14px",
     lineHeight: "1.428571429",
     fontWeight: "400",
@@ -59,7 +59,7 @@ const customCheckboxRadioSwitch = theme => ({
     transition: "0.3s ease all"
   },
   labelHorizontal: {
-    color: "rgba(0, 0, 0, 0.26)",
+    color: "rgba(0, 0, 0, 0.8)",
     cursor: "pointer",
     display: "inline-flex",
     fontSize: "14px",
